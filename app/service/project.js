@@ -4,12 +4,12 @@ const download = require('download-git-repo');
 const utils = require('../utils/fileUtils');
 const fs = require('fs');
 const process = require('child_process');
-const octokit = new Octokit({ auth: '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' });
+const octokit = new Octokit({ auth: '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' });
 
 function downloadFunc(downloadRepoUrl, temp_dest) {
   return new Promise(async (resolve, reject) => {
     console.log(downloadRepoUrl);
-    download('zhuqitao/coco-template', temp_dest,  (err) => {
+    download('chen-thewho-h5/thewho-template', temp_dest,  (err) => {
       if (err) {
         console.log(err);
         reject('请求模板下载失败');
@@ -74,8 +74,8 @@ class ProjectService extends Service {
   async createProject(config) {
     // todo 判断是否已经存在项目，存在则不创建
     // coco-h5 替换成创建的 organizations name
-    const {data: {id, ssh_url}} = await octokit.request('POST /orgs/coco-h5/repos', {
-      org: 'coco-h5',
+    const {data: {id, ssh_url}} = await octokit.request('POST /orgs/chen-thewho-h5/repos', {
+      org: 'chen-thewho-h5',
       name: config.name
     });
 
